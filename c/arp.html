@@ -5,11 +5,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="ab:Apache服务器的性能测试工具 - 最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。">
-    <meta name="keywords" content="Linux,Command,命令大全,Linux命令手册,ab,Apache服务器的性能测试工具">
-    <title>ab 命令，Linux ab 命令详解：Apache服务器的性能测试工具 -  Linux 命令搜索引擎</title>
+    <meta name="description" content="arp:arp 命令用于显示和修改 IP 到 MAC 转换表 - 最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。">
+    <meta name="keywords" content="Linux,Command,命令大全,Linux命令手册,arp,arp 命令用于显示和修改 IP 到 MAC 转换表">
+    <title>arp 命令，Linux arp 命令详解：arp 命令用于显示和修改 IP 到 MAC 转换表 -  Linux 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1647058286110">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1647058286368">
 </head>
 <body>
 <a href="https://github.com/jaywcjlove/linux-command" target="_blank" class="github-corner">
@@ -35,7 +35,7 @@
           </ul>
           <input type="text" class="query" id="query" autocomplete="off" autofocus="autofocus" placeholder="Linux 命令搜索"/>
           <div class="enter-input">
-              <input type="hidden" id="current_path" value="/c/ab.html">
+              <input type="hidden" id="current_path" value="/c/arp.html">
               <button id="search_btn">搜索</button>
           </div>
       </div>
@@ -46,218 +46,75 @@
 <div class="markdown-body">
 
 <span class="edit_btn">
-<a target="_blank" href="https://github.com/jaywcjlove/linux-command/edit/master/command/ab.md">纠正错误</a> 
+<a target="_blank" href="https://github.com/jaywcjlove/linux-command/edit/master/command/arp.md">纠正错误</a> 
 <span class="split"></span>
-<a target="_blank" href="https://github.com/jaywcjlove/linux-command/edit/master/command/ab.md">添加实例</a>
+<a target="_blank" href="https://github.com/jaywcjlove/linux-command/edit/master/command/arp.md">添加实例</a>
 </span>
 
 
 
 <div class="markdown-body">
-  <h1 id="ab"><a class="anchor" aria-hidden="true" tabindex="-1" href="#ab"><span class="octicon octicon-link"></span></a>ab</h1>
-  <p>Apache服务器的性能测试工具</p>
+  <h1 id="arp"><a class="anchor" aria-hidden="true" tabindex="-1" href="#arp"><span class="octicon octicon-link"></span></a>arp</h1>
+  <p>arp 命令用于显示和修改 IP 到 MAC 转换表</p>
   <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-  <p><strong>ab命令</strong> 是一个测试你 Apache http 服务器的工具，你可以通过这个工具，指定一个单位时间内向 apache 发出的请求数量来看看你的 Apache 和机器配合的性能如何。</p>
+  <p><strong>arp 命令</strong> 是 Address Resolution Protocol，地址解析协议，是通过解析网络层地址来找寻数据链路层地址的一个网络协议包中极其重要的网络传输协议。而该命令可以显示和修改 arp 协议解析表中的缓冲数据。</p>
+  <p>这个核心协议模块实现RFC826中定义的 Address Resolution Protocol [译注：即TCP/IP的第三层到第一层的地址转换协议]，用于在直接相连的网络中换第二层硬件地址和 Ipv4 协议地址之间的转换。 用户除非想对其进行配置，否则一般不会直接操作这个模块。</p>
+  <p>实际上，它提供对核心中其它协议的服务。</p>
+  <p>用户进程可以使用 packet(7) 的 sockets，收到 ARP 包（译注：一译分组）。 还有一种机制是使用 netlink(7) sockets，在用户空间管理 ARP 缓存的机制。我们也可以通过 ioctl (2) 控制任意 PF_INET socket上的 ARP 表</p>
+  <p>ARP 模块维护一个硬件地址到协议地址映射的缓存。这个缓存有大小限制，所以不常用的和旧的记录（Entry）将被垃圾收集器清除（garbage-collected），垃圾收集器永远不能删除标为永久的记录。我们可以使用ioctls直接操纵缓冲， 并且其性状可以用下面定义的 sysctl 调节。</p>
+  <p>如果在限定的时间（见下面的sysctl）内，一条现存映射没有肯定反馈时， 则认为相邻层的缓存记录失效。 为了再次向目标发送数据，ARP将首先试着询问本地arp进程 app_solicit 次，获取更新了的 MAC（介质访问控制）地址。 如果失败，并且旧的MAC地址是已知的，则发送 ucast_solicit 次的 unicast probe。如果仍然失败，则将向网络广播一个新的ARP请求,此时要 有待发送数据的队列</p>
+  <p>如果 Linux 接到一个地址请求，而且该地址指向 Linux 转发的地址，并且接收接口打开了代理 arp 时，Linux 将自动添加一条非永久的代理 arp 记录；如果存在拒绝到目标的路由，则不添加代理 arp 记录。</p>
   <h3 id="语法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#语法"><span class="octicon octicon-link"></span></a>语法</h3>
-  <pre class="language-shell"><code class="language-shell">ab <span class="token punctuation">[</span> -A auth-username:password <span class="token punctuation">]</span> <span class="token punctuation">[</span> -c concurrency <span class="token punctuation">]</span> <span class="token punctuation">[</span> -C cookie-name<span class="token operator">=</span>value
-<span class="token punctuation">]</span> <span class="token punctuation">[</span> -d <span class="token punctuation">]</span> <span class="token punctuation">[</span> -e csv-file <span class="token punctuation">]</span> <span class="token punctuation">[</span> -g gnuplot-file <span class="token punctuation">]</span> <span class="token punctuation">[</span> -h <span class="token punctuation">]</span> <span class="token punctuation">[</span> -H custom-header <span class="token punctuation">]</span> <span class="token punctuation">[</span>
--i  <span class="token punctuation">]</span>  <span class="token punctuation">[</span>  -k  <span class="token punctuation">]</span>  <span class="token punctuation">[</span>  -n  requests  <span class="token punctuation">]</span> <span class="token punctuation">[</span> -p POST-file <span class="token punctuation">]</span> <span class="token punctuation">[</span> -P proxy-auth-user‐
-name:password <span class="token punctuation">]</span> <span class="token punctuation">[</span> -q <span class="token punctuation">]</span> <span class="token punctuation">[</span> -s <span class="token punctuation">]</span> <span class="token punctuation">[</span> -S <span class="token punctuation">]</span> <span class="token punctuation">[</span> -t timelimit <span class="token punctuation">]</span> <span class="token punctuation">[</span> -T content-type  <span class="token punctuation">]</span>
-<span class="token punctuation">[</span>  -v verbosity<span class="token punctuation">]</span> <span class="token punctuation">[</span> -V <span class="token punctuation">]</span> <span class="token punctuation">[</span> -w <span class="token punctuation">]</span> <span class="token punctuation">[</span> -x <span class="token operator">&#x3C;</span>table<span class="token operator">></span>-attributes <span class="token punctuation">]</span> <span class="token punctuation">[</span> -X proxy<span class="token punctuation">[</span>:port<span class="token punctuation">]</span>
-<span class="token punctuation">]</span>  <span class="token punctuation">[</span>  -y  <span class="token operator">&#x3C;</span>tr<span class="token operator">></span>-attributes  <span class="token punctuation">]</span>  <span class="token punctuation">[</span>  -z   <span class="token operator">&#x3C;</span>td<span class="token operator">></span>-attributes   <span class="token punctuation">]</span>   <span class="token punctuation">[</span>http://<span class="token punctuation">]</span>host‐
-name<span class="token punctuation">[</span>:port<span class="token punctuation">]</span>/path
-</code><div onclick="copied(this)" data-code="ab [ -A auth-username:password ] [ -c concurrency ] [ -C cookie-name=value
-] [ -d ] [ -e csv-file ] [ -g gnuplot-file ] [ -h ] [ -H custom-header ] [
--i  ]  [  -k  ]  [  -n  requests  ] [ -p POST-file ] [ -P proxy-auth-user‐
-name:password ] [ -q ] [ -s ] [ -S ] [ -t timelimit ] [ -T content-type  ]
-[  -v verbosity] [ -V ] [ -w ] [ -x <table>-attributes ] [ -X proxy[:port]
-]  [  -y  <tr>-attributes  ]  [  -z   <td>-attributes   ]   [http://]host‐
-name[:port]/path
+  <pre class="language-shell"><code class="language-shell">arp（选项）（参数）
+</code><div onclick="copied(this)" data-code="arp（选项）（参数）
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
   <h3 id="选项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#选项"><span class="octicon octicon-link"></span></a>选项</h3>
-  <pre class="language-shell"><code class="language-shell">-A auth-username:password
-      <span class="token comment">#  支持基本的验证证书,用户名和密码之间使用"冒号"                    :</span>
-      <span class="token comment"># 分隔开,ab将以明文方式传送过去.不管服务器是不是需要</span>
-      <span class="token comment"># ,也就是说你的服务器需要支持401认证.</span>
-
--c concurrency
-      <span class="token comment"># 同时向服务器端发送的请求数目，默认状态下是一次 只执行一个http请求.</span>
-
--C cookie-name<span class="token operator">=</span>value
-      <span class="token comment"># Add a Cookie: line to the request. The argument is typically in the</span>
-      <span class="token comment"># form of a name=value pair. This field is repeatable.</span>
-
--d    <span class="token comment">#  Do not display  the  "percentage  served  within  XX  [ms]  table".</span>
-      <span class="token comment"># (legacy support).</span>
-
--e csv-file
-      <span class="token comment"># Write  a  Comma  separated value (CSV) file which contains for each</span>
-      <span class="token comment"># percentage (from 1% to 100%) the time (in milli seconds) it took to</span>
-      <span class="token comment"># serve  that percentage of the requests. This is usually more useful</span>
-      <span class="token comment"># than the 'gnuplot' file; as the results are already 'binned'.</span>
-
--g gnuplot-file
-      <span class="token comment"># Write all measured values out as a 'gnuplot' or TSV  (Tab  separate</span>
-      <span class="token comment"># values)  file.  This file can easily be imported into packages like</span>
-      <span class="token comment"># Gnuplot, IDL, Mathematica, Igor or even Excell. The labels  are  on</span>
-      <span class="token comment"># the first line of the file.</span>
--h    <span class="token comment"># 显示使用说明</span>
--H custom-header
-      <span class="token comment"># 向请求包追加附加的标题字串.此参数应该是有效的标题         行(header</span>
-      <span class="token comment"># line)形式,通常使用冒号":"来分隔有效配对 (valid  pair)例如  'Accept-</span>
-      <span class="token comment"># Encoding: zip/zop;8 bit';</span>
-
--i    <span class="token comment"># 使用一个 http 头(HEAD) 来替换 GET方法.不可以掺入POST 方法</span>
-
--k    <span class="token comment">#  允许http      KeepAlive      ；也就是说执行多个请求在一个      http</span>
-      <span class="token comment"># 会话当中，默认是不允许的也就是no KeepAlive啦;)</span>
-
--n requests
-      <span class="token comment"># 执行一次测试会话的时候所发出的请求数目,默认是执行一个单一的请求</span>
-      <span class="token comment"># 当然了这样的测试结果也就没什么意义了</span>
-
--p POST-file
-      <span class="token comment"># 测试程序也就是ab,将向Apache server发送带有HTTP POST 的请求.</span>
-
--P proxy-auth-username:password
-      <span class="token comment"># 当需要通过代理测试一台 HTTP 服务器的时候而你的代理</span>
-      <span class="token comment"># 又需要用户名密码验证,这时你可以使用这个选项,同样</span>
-      <span class="token comment"># 用户名与密码之间使用冒号":"分隔开,ab将之以明文的方式</span>
-      <span class="token comment"># 发送出去,当然,前提是你的代理是处于407认证状态的</span>
-
--q    <span class="token comment">#  When processing more than 150 requests, ab outputs a progress count</span>
-      <span class="token comment"># on  stderr  every  10% or 100 requests or so. The -q flag will sup‐</span>
-      <span class="token comment"># press these messages.</span>
-
--s    <span class="token comment">#  When compiled in (ab -h will show you) use the SSL protected  https</span>
-      <span class="token comment"># rather  than  the  http  protocol. This feature is experimental and</span>
-      <span class="token comment"># very rudimentary. You probably do not want to use it.</span>
-
--S    <span class="token comment">#  Do not display the median and standard deviation values,  nor  dis‐</span>
-      <span class="token comment"># play  the  warning/error  messages  when the average and median are</span>
-      <span class="token comment"># more than one or two times the standard deviation  apart.  And  de‐</span>
-      <span class="token comment"># fault to the min/avg/max values. (legacy support).</span>
-
--t timelimit
-      <span class="token comment">#  设置测试的时间的长短，使用这个选项ab将自动设置</span>
-      <span class="token comment"># 测试请求会话数目为50000，然后以你设置的时间为</span>
-      <span class="token comment"># 固定周期.默认状态下是没有时限的，也就是直到完成</span>
-      <span class="token comment"># 你所设置的请求数目为止.</span>
-
--T content-type
-      <span class="token comment"># 内容类型标头,使用在POST数据的时候.</span>
-
--v verbosity
-      <span class="token comment"># 设置冗余级别,4级打印出每个请求标头的详细信息,</span>
-      <span class="token comment"># 3级打印出回应代码(例如,404,200),2级打印出警告 信息和指示消息</span>
-
--V    <span class="token comment"># 显示版本号并且退出</span>
--w    <span class="token comment"># 打印输出结果到HTML表中. 默认的表是两列n行白底黑框</span>
-
--x <span class="token operator">&#x3C;</span>table<span class="token operator">></span>-attributes
-      <span class="token comment"># 使用字串来描述表的属性,该属性字串应该插入到&#x3C;table 这里 ></span>
-
--X proxy<span class="token punctuation">[</span>:port<span class="token punctuation">]</span>
-      <span class="token comment"># Use a proxy server for the requests.</span>
-
--y <span class="token operator">&#x3C;</span>tr<span class="token operator">></span>-attributes
-      <span class="token comment"># 用于生成html表格每行的属性名 (&#x3C;tr>)</span>
-
--z <span class="token operator">&#x3C;</span>td<span class="token operator">></span>-attributes
-      <span class="token comment"># 用于生成html表格每列的属性名 (&#x3C;td>)</span>
-</code><div onclick="copied(this)" data-code="-A auth-username:password
-      #  支持基本的验证证书,用户名和密码之间使用&#x22;冒号&#x22;                    :
-      # 分隔开,ab将以明文方式传送过去.不管服务器是不是需要
-      # ,也就是说你的服务器需要支持401认证.
-
--c concurrency
-      # 同时向服务器端发送的请求数目，默认状态下是一次 只执行一个http请求.
-
--C cookie-name=value
-      # Add a Cookie: line to the request. The argument is typically in the
-      # form of a name=value pair. This field is repeatable.
-
--d    #  Do not display  the  &#x22;percentage  served  within  XX  [ms]  table&#x22;.
-      # (legacy support).
-
--e csv-file
-      # Write  a  Comma  separated value (CSV) file which contains for each
-      # percentage (from 1% to 100%) the time (in milli seconds) it took to
-      # serve  that percentage of the requests. This is usually more useful
-      # than the &#x27;gnuplot&#x27; file; as the results are already &#x27;binned&#x27;.
-
--g gnuplot-file
-      # Write all measured values out as a &#x27;gnuplot&#x27; or TSV  (Tab  separate
-      # values)  file.  This file can easily be imported into packages like
-      # Gnuplot, IDL, Mathematica, Igor or even Excell. The labels  are  on
-      # the first line of the file.
--h    # 显示使用说明
--H custom-header
-      # 向请求包追加附加的标题字串.此参数应该是有效的标题         行(header
-      # line)形式,通常使用冒号&#x22;:&#x22;来分隔有效配对 (valid  pair)例如  &#x27;Accept-
-      # Encoding: zip/zop;8 bit&#x27;;
-
--i    # 使用一个 http 头(HEAD) 来替换 GET方法.不可以掺入POST 方法
-
--k    #  允许http      KeepAlive      ；也就是说执行多个请求在一个      http
-      # 会话当中，默认是不允许的也就是no KeepAlive啦;)
-
--n requests
-      # 执行一次测试会话的时候所发出的请求数目,默认是执行一个单一的请求
-      # 当然了这样的测试结果也就没什么意义了
-
--p POST-file
-      # 测试程序也就是ab,将向Apache server发送带有HTTP POST 的请求.
-
--P proxy-auth-username:password
-      # 当需要通过代理测试一台 HTTP 服务器的时候而你的代理
-      # 又需要用户名密码验证,这时你可以使用这个选项,同样
-      # 用户名与密码之间使用冒号&#x22;:&#x22;分隔开,ab将之以明文的方式
-      # 发送出去,当然,前提是你的代理是处于407认证状态的
-
--q    #  When processing more than 150 requests, ab outputs a progress count
-      # on  stderr  every  10% or 100 requests or so. The -q flag will sup‐
-      # press these messages.
-
--s    #  When compiled in (ab -h will show you) use the SSL protected  https
-      # rather  than  the  http  protocol. This feature is experimental and
-      # very rudimentary. You probably do not want to use it.
-
--S    #  Do not display the median and standard deviation values,  nor  dis‐
-      # play  the  warning/error  messages  when the average and median are
-      # more than one or two times the standard deviation  apart.  And  de‐
-      # fault to the min/avg/max values. (legacy support).
-
--t timelimit
-      #  设置测试的时间的长短，使用这个选项ab将自动设置
-      # 测试请求会话数目为50000，然后以你设置的时间为
-      # 固定周期.默认状态下是没有时限的，也就是直到完成
-      # 你所设置的请求数目为止.
-
--T content-type
-      # 内容类型标头,使用在POST数据的时候.
-
--v verbosity
-      # 设置冗余级别,4级打印出每个请求标头的详细信息,
-      # 3级打印出回应代码(例如,404,200),2级打印出警告 信息和指示消息
-
--V    # 显示版本号并且退出
--w    # 打印输出结果到HTML表中. 默认的表是两列n行白底黑框
-
--x <table>-attributes
-      # 使用字串来描述表的属性,该属性字串应该插入到<table 这里 >
-
--X proxy[:port]
-      # Use a proxy server for the requests.
-
--y <tr>-attributes
-      # 用于生成html表格每行的属性名 (<tr>)
-
--z <td>-attributes
-      # 用于生成html表格每列的属性名 (<td>)
+  <pre class="language-shell"><code class="language-shell">-a <span class="token comment"># 主机 ：显示 arp 缓冲区的所有条目；</span>
+-H <span class="token comment"># 地址类型 ：指定 arp 指令使用的地址类型；</span>
+-d <span class="token comment"># 主机 ：从 arp 缓冲区中删除指定主机的 arp 条目；</span>
+-D <span class="token comment"># 使用指定接口的硬件地址；</span>
+-e <span class="token comment"># 以 Linux 的显示风格显示 arp 缓冲区中的条目；</span>
+-i <span class="token comment"># 接口 ：指定要操作 arp 缓冲区的网络接口；</span>
+-s <span class="token comment"># 主机 MAC 地址 ：设置指定的主机的 IP 地址与 MAC 地址的静态映射；</span>
+-n <span class="token comment"># 以数字方式显示 arp 缓冲区中的条目；</span>
+-v <span class="token comment"># 显示详细的 arp 缓冲区条目，包括缓冲区条目的统计信息；</span>
+-f <span class="token comment"># 文件 ：设置主机的 IP 地址与 MAC 地址的静态映射。</span>
+</code><div onclick="copied(this)" data-code="-a # 主机 ：显示 arp 缓冲区的所有条目；
+-H # 地址类型 ：指定 arp 指令使用的地址类型；
+-d # 主机 ：从 arp 缓冲区中删除指定主机的 arp 条目；
+-D # 使用指定接口的硬件地址；
+-e # 以 Linux 的显示风格显示 arp 缓冲区中的条目；
+-i # 接口 ：指定要操作 arp 缓冲区的网络接口；
+-s # 主机 MAC 地址 ：设置指定的主机的 IP 地址与 MAC 地址的静态映射；
+-n # 以数字方式显示 arp 缓冲区中的条目；
+-v # 显示详细的 arp 缓冲区条目，包括缓冲区条目的统计信息；
+-f # 文件 ：设置主机的 IP 地址与 MAC 地址的静态映射。
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
   <h3 id="参数"><a class="anchor" aria-hidden="true" tabindex="-1" href="#参数"><span class="octicon octicon-link"></span></a>参数</h3>
-  <p>主机：被测试主机。</p>
+  <p>主机：查询 arp 缓冲区中指定主机的 arp 条目。</p>
+  <h3 id="实例"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实例"><span class="octicon octicon-link"></span></a>实例</h3>
+  <p>显示arp 缓冲区内容</p>
+  <pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># arp -v</span>
+Address                  HWtype  HWaddress           Flags Mask            Iface
+<span class="token number">192.168</span>.0.134            ether   00:21:5E:C7:4D:88   C                     eth1
+<span class="token number">115.238</span>.144.129          ether   <span class="token number">38</span>:22:D6:2F:B2:F1   C                     eth0
+Entries: <span class="token number">2</span>      Skipped: <span class="token number">0</span>      Found: <span class="token number">2</span>
+</code><div onclick="copied(this)" data-code="[root@localhost ~]# arp -v
+Address                  HWtype  HWaddress           Flags Mask            Iface
+192.168.0.134            ether   00:21:5E:C7:4D:88   C                     eth1
+115.238.144.129          ether   38:22:D6:2F:B2:F1   C                     eth0
+Entries: 2      Skipped: 0      Found: 2
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+  <p>添加静态 arp 映射</p>
+  <pre class="language-shell"><code class="language-shell">arp -s IP MAC-ADDRESS
+arp -s <span class="token number">192.168</span>.1.1 00:b1:b2:b3:b4:b5
+</code><div onclick="copied(this)" data-code="arp -s IP MAC-ADDRESS
+arp -s 192.168.1.1 00:b1:b2:b3:b4:b5
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+  <p>删除 arp 缓存条目</p>
+  <pre class="language-shell"><code class="language-shell">arp -d <span class="token number">192.168</span>.1.1
+</code><div onclick="copied(this)" data-code="arp -d 192.168.1.1
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre><!-- Linux 命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
 </div>
 
 
@@ -281,7 +138,7 @@ name[:port]/path
     575
   </span> 个Linux命令，超过 <a href="../contributors.html">50+</a> 贡献者
 </div>
-<script type="text/javascript" src="../js/dt.js?v=1647058286111"></script>
-<script type="text/javascript" src="../js/index.js?v=1647058286111"></script>
+<script type="text/javascript" src="../js/dt.js?v=1647058286368"></script>
+<script type="text/javascript" src="../js/index.js?v=1647058286368"></script>
 </body>
 </html>
